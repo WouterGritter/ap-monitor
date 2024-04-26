@@ -5,6 +5,7 @@ services:
     build: .
     restart: unless-stopped
     environment:
-      HEARTBEAT_INTERVAL: 10
+      HEARTBEAT_INTERVAL: 1
+      RECOVERY_ATTEMPT_DELAY: 1800
       DISCORD_WEBHOOK_URL: ${DISCORD_WEBHOOK_URL}
       APMON_CONFIG: ${APMON_CONFIG}
