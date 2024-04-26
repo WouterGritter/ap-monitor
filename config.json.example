@@ -1,0 +1,26 @@
+{
+  "switches": {
+    "sw-1": {
+      "host": "192.168.100.100",
+      "username": "admin",
+      "password": "password"
+    },
+    "sw-2": {
+      "host": "192.168.100.101",
+      "username": "admin",
+      "password": "password"
+    }
+  },
+  "ap_monitors": {
+    "ap-1": {
+      "ap_host": "192.168.105.100",
+      "switch": "sw-1",
+      "switch_port": 1
+    },
+    "ap-2": {
+      "ap_host": "192.168.105.101",
+      "switch": "sw-2",
+      "switch_port": 1
+    }
+  }
+}

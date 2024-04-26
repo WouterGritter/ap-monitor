@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  ap-monitor:
+    build: .
+    restart: unless-stopped
+    environment:
+      HEARTBEAT_INTERVAL: 10
+      DISCORD_WEBHOOK_URL: ${DISCORD_WEBHOOK_URL}
+      APMON_CONFIG: ${APMON_CONFIG}
