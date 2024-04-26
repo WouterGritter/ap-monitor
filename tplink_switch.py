@@ -2,6 +2,9 @@ from tplink_api.tplink_api import TpLinkApi
 from utils import is_host_reachable
 
 
+RETRIES = 5
+
+
 class TpLinkSwitch:
     def __init__(self, name, host, username, password):
         self.name = name
@@ -20,12 +23,20 @@ class TpLinkSwitch:
         port_states = await self.api.get_port_states()
         port_state = next(filter(lambda p: p.number == port_number, port_states))
 
-        await self.api.set_port_state(
-            number=port_number,
-            enabled=enabled,
-            speed_config=port_state.speed_config,
-            flow_control_config=port_state.flow_control_config,
-        )
+        last_exception = None
+        for i in range(RETRIES):
+            try:
+                await self.api.set_port_state(
+                    number=port_number,
+                    enabled=enabled,
+                    speed_config=port_state.speed_config,
+                    flow_control_config=port_state.flow_control_config,
+                )
+                return
+            except Exception as e:
+                last_exception = e
+
+        raise last_exception
 
     async def is_reachable(self) -> bool:
         return await is_host_reachable(self.host)
