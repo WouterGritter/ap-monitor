@@ -57,7 +57,7 @@ class APMonitor:
 
         await self.switch.set_port_enabled(self.switch_port, True)
 
-        reachable = await self.is_reachable(5)
+        reachable = await self.is_reachable(60)
         if reachable:
             self._log('Recovery successful, AP is reachable again.')
             self.switch_port_disabled = False
