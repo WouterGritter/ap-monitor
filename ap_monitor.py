@@ -6,7 +6,7 @@ from logger.logger import Logger
 from tplink_switch import TpLinkSwitch
 from utils import is_host_reachable
 
-RECOVERY_ATTEMPT_DELAY = float(os.getenv('RECOVERY_ATTEMPT_DELAY', 30 * 60))
+RECOVERY_ATTEMPT_DELAY = float(os.getenv('RECOVERY_ATTEMPT_DELAY', 450))
 
 
 class APMonitor:
