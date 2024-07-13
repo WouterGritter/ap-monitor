@@ -35,9 +35,8 @@ class APMonitor:
         else:
             if not self.switch_port_disabled:
                 self._log(f'AP is not reachable. Assuming someone has tampered with the AP connection. '
-                          f'Disabling switch port #{self.switch_port} on switch {self.switch.name}. '
-                          f'When the issue has been resolved, please enable the port manually in the switch '
-                          f'to allow the AP to function again.')
+                          f'Disabling switch port `#{self.switch_port}` on switch `{self.switch.name}`. '
+                          f'Attempting recovery in {RECOVERY_ATTEMPT_DELAY/60:.0f} minutes.')
 
                 try:
                     await self.switch.set_port_enabled(self.switch_port, False)
