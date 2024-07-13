@@ -41,6 +41,8 @@ def load_ap_monitors(config, logger):
 
 
 async def main():
+    print(f'ap-monitor version {os.getenv("IMAGE_VERSION")}')
+
     heartbeat_interval = float(os.getenv('HEARTBEAT_INTERVAL', 10))
 
     discord_webhook_url = os.getenv('DISCORD_WEBHOOK_URL')
